@@ -1,0 +1,811 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Webapp</title> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	<script src="js/helper.js"></script>	
+	<script src="js/page-dashboard.js"></script>
+	<script src="js/page-configure.js"></script>	
+	<script src="js/page-settings.js"></script>
+	<script src="js/page-control.js"></script>	
+	<script src="js/page-create-rules.js"></script>		
+	<script src="js/page-edit-rules.js"></script>		
+	<script src="js/page-take-readings.js"></script>		
+</head> 
+
+	
+<body> 
+
+<!-- Main page display: DASHBOARD -->
+<div data-role="page" id="dashboard" data-theme="b">
+
+	<div data-role="header" data-position="inline" data-theme="b">
+		<label id="label-select-current-device" for="select-current-device" class="ui-hidden-accessible">Choose Device</label>
+		<select name="select-current-device" id="select-current-device" data-mini="true" class="ui-btn-left">
+		   <option value="choose-device">Choose Device</option>
+		</select>	
+		<h1>Dashboard</h1>
+		<a href="#settings" data-icon="gear" class="ui-btn-right">Settings</a>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+
+	    <a href="#add-widgets" data-role="button" id="page-dashboard-content-add-widgets" data-theme="e">Add Widgets To Dashboard</a>
+		<br>
+	    <a href="#control-device" data-role="button" id="page-dashboard-content-control-device" data-theme="e">Control Device</a>
+		<br>		
+	    <a href="#take-readings" data-role="button" id="page-dashboard-content-take-readings" data-theme="e">Take Readings</a>
+		<br>
+	    <a href="#create-rules" data-role="button" id="page-dashboard-content-create-rules" data-theme="e">Create Rules</a>
+		<br>		
+	    <a href="#edit-rules" data-role="button" id="page-dashboard-content-edit-rules" data-theme="e">Edit Rules</a>
+		<br>			
+	    <a href="#configure-device" data-role="button" id="page-dashboard-content-configure-device" data-theme="e">Configure Device</a>   
+
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="b">
+
+	</div><!-- /footer -->
+</div>
+<!-- /DASHBOARD -->
+
+
+
+
+<!-- add widgets -->
+<div data-role="page" id="add-widgets" data-theme="b">
+
+	<div data-role="header" data-position="inline" data-theme="b">
+		<a href="#" data-rel="back" class="ui-btn-left">Back</a>
+		<h1>Widgets</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	  
+
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="b">
+
+	</div><!-- /footer -->
+</div>
+<!-- /add widgets -->
+
+
+
+
+<!-- Main page display: configure device -->
+<div data-role="page" id="control-device" data-theme="b">
+
+	<div data-role="header" data-position="inline" data-theme="b">
+		<a href="#" data-rel="back" class="ui-btn-left">Back</a>
+		<h1>Control</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<h2>
+			Digital Pins
+		</h2>
+		<label for="page-control-device-content-select-pin" class="select" class="ui-hidden-accessible">Select Pin To Control</label>
+		<select name="page-control-device-content-select-pin" id="page-control-device-content-select-pin">
+
+		</select>		
+		<br>
+	    
+		<div data-role="fieldcontain">
+		    <fieldset data-role="controlgroup" data-type="horizontal">
+		    	<legend>Control Pin</legend>
+		         	<input type="radio" name="page-control-device-content-control-pin" id="page-control-device-content-control-pin-on" value="1" checked="" />
+		         	<label for="page-control-device-content-control-pin-on">On</label>
+		
+		         	<input type="radio" name="page-control-device-content-control-pin" id="page-control-device-content-control-pin-off" value="0"  checked="" />
+		         	<label for="page-control-device-content-control-pin-off">Off</label>
+		    </fieldset>
+		</div>
+		
+		<label for="page-control-device-content-pwm-slider">PWM Value:</label>
+		<input type="range" name="page-control-device-content-pwm-slider" id="page-control-device-content-pwm-slider" value="0" min="0" max="255" />		
+		
+		<h2>
+			PCF8574A
+		</h2>
+		<label for="page-control-device-content-select-pcf8574-device" class="select" class="ui-hidden-accessible">Select PCF8574 Device</label>
+		<select name="page-control-device-content-select-pcf8574-device" id="page-control-device-content-select-pcf8574-device">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>			
+		</select>		
+		<br>
+		<label for="page-control-device-content-select-pcf8574-pin" class="select" class="ui-hidden-accessible">Select PCF8574 Pin</label>
+		<select name="page-control-device-content-select-pcf8574-pin" id="page-control-device-content-select-pcf8574-pin">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>	
+		</select>		
+		<br>	
+		<div data-role="fieldcontain">
+		    <fieldset data-role="controlgroup" data-type="horizontal">
+		    	<legend>Control Pin</legend>
+		         	<input type="radio" name="page-control-device-content-control-pcf8574-pin" id="page-control-device-content-control-pcf8574-pin-on" value="1" checked="" />
+		         	<label for="page-control-device-content-control-pcf8574-pin-on">On</label>
+		
+		         	<input type="radio" name="page-control-device-content-control-pcf8574-pin" id="page-control-device-content-control-pcf8574-pin-off" value="0"  checked="" />
+		         	<label for="page-control-device-content-control-pcf8574-pin-off">Off</label>
+		    </fieldset>
+		</div>			
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="b">
+
+	</div><!-- /footer -->
+</div>
+<!-- /configure device -->
+
+<!-- take reading div -->
+<div data-role="page" id="take-readings" data-theme="b">
+	<div data-role="header" data-position="inline" data-theme="b">
+		<a href="#" data-rel="back" class="ui-btn-left">Back</a>
+		<h1>Take Readings</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div id="page-take-reading-content-reading-div"></div>
+			
+		<label for="page-take-reading-content-select-type-of-reading" class="select" class="ui-hidden-accessible">Select Type of Reading</label>
+		<select name="page-take-reading-content-select-type-of-reading" id="page-take-reading-content-select-type-of-reading">
+			<option value="digital-pin">Digital Pin</option>
+			<option value="analog-pin">Analog Pin</option>
+			<option value="ds1307">Time</option>
+			<option value="ds18b20">Temperature</option>
+		</select>
+		<br>
+		
+		<div id="page-take-reading-content-digital-pin-type" style="display:none;">
+			<label for="page-take-reading-content-digital-pin-type-select-pin" class="select" class="ui-hidden-accessible">Select Pin To Read</label>
+			<select name="page-take-reading-content-digital-pin-type-select-pin" id="page-take-reading-content-digital-pin-type-select-pin">
+	
+			</select>
+			<br>
+			
+			<label for="page-take-reading-content-digital-pin-type-select-interval" class="select" class="ui-hidden-accessible">Select Interval (Seconds)</label>
+			<select name="page-take-reading-content-digital-pin-type-select-interval" id="page-take-reading-content-digital-pin-type-select-interval">
+				<option value="0.5">0.5 Seconds</option>
+				<option value="1">1 Seconds</option>
+				<option value="1.5">1.5 Seconds</option>
+				<option value="2">2 Seconds</option>
+				<option value="3">3 Seconds</option>
+				<option value="4">4 Seconds</option>
+				<option value="5">5 Seconds</option>																					
+			</select>
+			<br>
+		    <a href="#" data-role="button" id="page-take-reading-content-digital-pin-start" data-theme="e">Start Reading</a>		
+			<br>
+		    <a href="#" data-role="button" id="page-take-reading-content-digital-pin-stop" data-theme="e">Stop Reading</a>							
+		</div>
+		<div id="page-take-reading-content-analog-pin-type" style="display:none;">
+			<label for="page-take-reading-content-analog-pin-type-select-pin" class="select" class="ui-hidden-accessible">Select Analog Pin To Read</label>
+			<select name="page-take-reading-content-analog-pin-type-select-pin" id="page-take-reading-content-analog-pin-type-select-pin">
+	
+			</select>
+			<br>
+			
+			<label for="page-take-reading-content-analog-pin-type-select-interval" class="select" class="ui-hidden-accessible">Select Interval (Seconds)</label>
+			<select name="page-take-reading-content-analog-pin-type-select-interval" id="page-take-reading-content-analog-pin-type-select-interval">
+				<option value="0.5">0.5 Seconds</option>
+				<option value="1">1 Seconds</option>
+				<option value="1.5">1.5 Seconds</option>
+				<option value="2">2 Seconds</option>
+				<option value="3">3 Seconds</option>
+				<option value="4">4 Seconds</option>
+				<option value="5">5 Seconds</option>																					
+			</select>	
+			<br>
+		    <a href="#" data-role="button" id="page-take-reading-content-analog-pin-start" data-theme="e">Start Reading</a>		
+			<br>
+		    <a href="#" data-role="button" id="page-take-reading-content-analog-pin-stop" data-theme="e">Stop Reading</a>							
+		</div>	
+		<div id="page-take-reading-content-ds1307" style="display:none;">
+			<label for="page-take-reading-content-ds1307-select-interval" class="select" class="ui-hidden-accessible">Select Interval (Seconds)</label>
+			<select name="page-take-reading-content-ds1307-select-interval" id="page-take-reading-content-ds1307-select-interval">
+				<option value="0.5">0.5 Seconds</option>
+				<option value="1">1 Seconds</option>
+				<option value="1.5">1.5 Seconds</option>
+				<option value="2">2 Seconds</option>
+				<option value="3">3 Seconds</option>
+				<option value="4">4 Seconds</option>
+				<option value="5">5 Seconds</option>																					
+			</select>	
+			<br>		
+		    <a href="#" data-role="button" id="page-take-reading-content-ds1307-start" data-theme="e">Start Reading</a>		
+			<br>
+		    <a href="#" data-role="button" id="page-take-reading-content-ds1307-stop" data-theme="e">Stop Reading</a>							
+		</div>	
+		<div id="page-take-reading-content-ds18b20" style="display:none;">
+			<label for="page-take-reading-content-ds18b20-select-device" class="select" class="ui-hidden-accessible">Select Device To Read</label>
+			<select name="page-take-reading-content-ds18b20-select-device" id="page-take-reading-content-ds18b20-select-device">
+	
+			</select>
+			<br>
+			
+			<label for="page-take-reading-content-ds18b20-select-interval" class="select" class="ui-hidden-accessible">Select Interval (Seconds)</label>
+			<select name="page-take-reading-content-ds18b20-select-interval" id="page-take-reading-content-ds18b20-select-interval">
+				<option value="0.5">0.5 Seconds</option>
+				<option value="1">1 Seconds</option>
+				<option value="1.5">1.5 Seconds</option>
+				<option value="2">2 Seconds</option>
+				<option value="3">3 Seconds</option>
+				<option value="4">4 Seconds</option>
+				<option value="5">5 Seconds</option>																					
+			</select>	
+			<br>
+		    <a href="#" data-role="button" id="page-take-reading-content-ds18b20-start" data-theme="e">Start Reading</a>		
+			<br>
+		    <a href="#" data-role="button" id="page-take-reading-content-ds18b20-stop" data-theme="e">Stop Reading</a>							
+		</div>						    
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="b">
+
+	</div><!-- /footer -->
+
+</div>
+<!-- /take reading div -->
+
+
+<!-- Main page display: create rules -->
+<div data-role="page" id="create-rules" data-theme="b">
+
+	<div data-role="header" data-position="inline" data-theme="b">
+		<a href="#" data-rel="back" class="ui-btn-left">Back</a>
+		<h1>Create Rules</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<label for="page-create-rules-content-select-rule-type" class="select" class="ui-hidden-accessible">Select Rule Type</label>
+		<select name="page-create-rules-content-select-rule-type" id="page-create-rules-content-select-rule-type">
+			<option value="watch-digital-pin">High/Low Rule</option>
+			<option value="watch-analog-pin">Analog Value Rule</option>
+			<option value="watch-ds18b20">Temperature Rule</option>
+			<option value="watch-ds1307">Time Rule</option>
+		</select>		
+		<br>
+		
+		<label for="page-create-rules-content-rule-name">Rule Name (5 Characters Max):</label>
+	    <input type="text" name="page-create-rules-content-rule-name" id="page-create-rules-content-rule-name" maxlength="5" value=""  />
+	    <br>
+	    
+	    <!-- div to display for high/low rules -->
+	    <div id="page-create-rules-content-watch-digital-pin" style="display:none;">
+	    	<!-- input -->
+			<label for="page-create-rules-content-watch-digital-pin-select-pin-input" class="select" class="ui-hidden-accessible">Select Input Pin</label>
+			<select name="page-create-rules-content-watch-digital-pin-select-pin-input" id="page-create-rules-content-watch-digital-pin-select-pin-input">
+	
+			</select>		
+			<br>
+		    
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			    	<legend>Watch Pin</legend>
+			         	<input type="radio" name="page-create-rules-content-watch-digital-pin-radio-input" id="page-create-rules-content-watch-digital-pin-radio-input-on" value="1" checked="" />
+			         	<label for="page-create-rules-content-watch-digital-pin-radio-input-on">High</label>
+			
+			         	<input type="radio" name="page-create-rules-content-watch-digital-pin-radio-input" id="page-create-rules-content-watch-digital-pin-radio-input-off" value="0"  checked="" />
+			         	<label for="page-create-rules-content-watch-digital-pin-radio-input-off">Low</label>
+			    </fieldset>
+			</div>
+			<!-- /input -->
+			<!-- output -->
+			<label for="page-create-rules-content-watch-digital-pin-select-pin-output" class="select" class="ui-hidden-accessible">Select Output Pin</label>
+			<select name="page-create-rules-content-watch-digital-pin-select-pin-output" id="page-create-rules-content-watch-digital-pin-select-pin-output">
+	
+			</select>		
+			<br>
+		    
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			    	<legend>Control Output Pin</legend>
+			         	<input type="radio" name="page-create-rules-content-watch-digital-pin-radio-output" id="page-create-rules-content-watch-digital-pin-radio-output-on" value="1" checked="" />
+			         	<label for="page-create-rules-content-watch-digital-pin-radio-output-on">On</label>
+			
+			         	<input type="radio" name="page-create-rules-content-watch-digital-pin-radio-output" id="page-create-rules-content-watch-digital-pin-radio-output-off" value="0"  checked="" />
+			         	<label for="page-create-rules-content-watch-digital-pin-radio-output-off">Off</label>
+			    </fieldset>
+			</div>	
+			<p>
+				If you want to use a PWM output set the value of the slider. If this value IS NOT 0 than the PWM value WILL BE USED.
+			</p>
+			
+			<label for="page-create-rules-content-watch-digital-pin-slider">PWM Value:</label>
+			<input type="range" name="page-create-rules-content-watch-digital-pin-slider" id="page-create-rules-content-watch-digital-pin-slider" value="0" min="0" max="255" />			
+						
+			<!-- /output -->	    
+	    </div>	
+	    <!-- end high/low rules div -->
+	    
+	    
+	    <!-- div to display for analog value rules -->
+	    <div id="page-create-rules-content-watch-analog-pin" style="display:none;">
+	    	<!-- input -->
+			<label for="page-create-rules-content-watch-analog-pin-select-pin-input" class="select" class="ui-hidden-accessible">Select Analog Pin</label>
+			<select name="page-create-rules-content-watch-analog-pin-select-pin-input" id="page-create-rules-content-watch-analog-pin-select-pin-input">
+	
+			</select>		
+			<br>
+		    
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			    	<legend>Watch Pin</legend>
+			         	<input type="radio" name="page-create-rules-content-watch-analog-pin-radio-input" id="page-create-rules-content-watch-analog-pin-radio-input-less-than" value="1" checked="" />
+			         	<label for="page-create-rules-content-watch-analog-pin-radio-input-less-than">Less Than</label>
+			
+			         	<input type="radio" name="page-create-rules-content-watch-analog-pin-radio-input" id="page-create-rules-content-watch-analog-pin-radio-input-greater-than" value="2"  checked="" />
+			         	<label for="page-create-rules-content-watch-analog-pin-radio-input-greater-than">Greater Than</label>
+			         	
+			         	<input type="radio" name="page-create-rules-content-watch-analog-pin-radio-input" id="page-create-rules-content-watch-analog-pin-radio-input-equal-to" value="3"  checked="" />
+			         	<label for="page-create-rules-content-watch-analog-pin-radio-input-equal-to">Equal To</label>			         	
+			    </fieldset>
+			</div>
+			
+			<label for="page-create-rules-content-watch-analog-pin-input-value">Analog Value:</label>
+		    <input type="number" name="page-create-rules-content-watch-analog-pin-input-value" id="page-create-rules-content-watch-analog-pin-input-value" maxlength="4" value=""  />			
+		    <br>
+			<!-- /input -->
+			<!-- output -->
+			<label for="page-create-rules-content-watch-analog-pin-select-pin-output" class="select" class="ui-hidden-accessible">Select Output Pin</label>
+			<select name="page-create-rules-content-watch-analog-pin-select-pin-output" id="page-create-rules-content-watch-analog-pin-select-pin-output">
+	
+			</select>		
+			<br>
+		    
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			    	<legend>Control Output Pin</legend>
+			         	<input type="radio" name="page-create-rules-content-watch-analog-pin-radio-output" id="page-create-rules-content-watch-analog-pin-radio-output-on" value="1" checked="" />
+			         	<label for="page-create-rules-content-watch-analog-pin-radio-output-on">On</label>
+			
+			         	<input type="radio" name="page-create-rules-content-watch-analog-pin-radio-output" id="page-create-rules-content-watch-analog-pin-radio-output-off" value="0"  checked="" />
+			         	<label for="page-create-rules-content-watch-analog-pin-radio-output-off">Off</label>
+			    </fieldset>
+			</div>			
+			
+			<p>
+				If you want to use a PWM output set the value of the slider. If this value IS NOT 0 than the PWM value WILL BE USED.
+			</p>
+			
+			<label for="page-create-rules-content-watch-analog-pin-slider">PWM Value:</label>
+			<input type="range" name="page-create-rules-content-watch-analog-pin-slider" id="page-create-rules-content-watch-analog-pin-slider" value="0" min="0" max="255" />							
+			<!-- /output -->	    
+	    </div>	
+	    <!-- end analog rules div -->
+	    
+	    
+	    <!-- div to display for temperature value rules -->
+	    <div id="page-create-rules-content-watch-ds18b20" style="display:none;">
+	    	<!-- input -->
+			<label for="page-create-rules-content-watch-ds18b20-select-sensor" class="select" class="ui-hidden-accessible">Select Sensor</label>
+			<select name="page-create-rules-content-watch-ds18b20-select-sensor" id="page-create-rules-content-watch-ds18b20-select-sensor">
+	
+			</select>		
+			<br>
+		    
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			    	<legend>Watch For</legend>
+			         	<input type="radio" name="page-create-rules-content-watch-ds18b20-radio-input" id="page-create-rules-content-watch-ds18b20-radio-input-less-than" value="1" checked="" />
+			         	<label for="page-create-rules-content-watch-ds18b20-radio-input-less-than">Less Than</label>
+			
+			         	<input type="radio" name="page-create-rules-content-watch-ds18b20-radio-input" id="page-create-rules-content-watch-ds18b20-radio-input-greater-than" value="2"  checked="" />
+			         	<label for="page-create-rules-content-watch-ds18b20-radio-input-greater-than">Greater Than</label>
+			         	
+			         	<input type="radio" name="page-create-rules-content-watch-ds18b20-radio-input" id="page-create-rules-content-watch-ds18b20-radio-input-equal-to" value="3"  checked="" />
+			         	<label for="page-create-rules-content-watch-ds18b20-radio-input-equal-to">Equal To</label>			         	
+			    </fieldset>
+			</div>
+			
+			<label for="page-create-rules-content-watch-ds18b20-input-value">Temperature Value:</label>
+		    <input type="number" name="page-create-rules-content-watch-ds18b20-input-value" id="page-create-rules-content-watch-ds18b20-input-value" maxlength="4" value=""  />			
+		    <br>
+			<!-- /input -->
+			<!-- output -->
+			<label for="page-create-rules-content-watch-ds18b20-select-pin-output" class="select" class="ui-hidden-accessible">Select Output Pin</label>
+			<select name="page-create-rules-content-watch-ds18b20-select-pin-output" id="page-create-rules-content-watch-ds18b20-select-pin-output">
+	
+			</select>		
+			<br>
+		    
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			    	<legend>Control Output Pin</legend>
+			         	<input type="radio" name="page-create-rules-content-watch-ds18b20-radio-output" id="page-create-rules-content-watch-ds18b20-radio-output-on" value="1" checked="" />
+			         	<label for="page-create-rules-content-watch-ds18b20-radio-output-on">On</label>
+			
+			         	<input type="radio" name="page-create-rules-content-watch-ds18b20-radio-output" id="page-create-rules-content-watch-ds18b20-radio-output-off" value="0"  checked="" />
+			         	<label for="page-create-rules-content-watch-ds18b20-radio-output-off">Off</label>
+			    </fieldset>
+			</div>			
+			
+			<p>
+				If you want to use a PWM output set the value of the slider. If this value IS NOT 0 than the PWM value WILL BE USED.
+			</p>
+			
+			<label for="page-create-rules-content-watch-ds18b20-slider">PWM Value:</label>
+			<input type="range" name="page-create-rules-content-watch-ds18b20-slider" id="page-create-rules-content-watch-ds18b20-slider" value="0" min="0" max="255" />							
+			<!-- /output -->	    
+	    </div>	
+	    <!-- end temperature rules div -->	    	
+	    
+	    
+	    <!-- div to display for DS1307 rules -->
+	    <div id="page-create-rules-content-watch-ds1307" style="display:none;">
+	    	<!-- input -->
+			<label for="page-create-rules-content-watch-ds1307-select-start-hour" class="select" class="ui-hidden-accessible">Select Hour Start</label>
+			<select name="page-create-rules-content-watch-ds1307-select-start-hour" id="page-create-rules-content-watch-ds1307-select-start-hour">
+	
+			</select>		
+			<br>
+			<label for="page-create-rules-content-watch-ds1307-select-start-minute" class="select" class="ui-hidden-accessible">Select Minute Start</label>
+			<select name="page-create-rules-content-watch-ds1307-select-start-minute" id="page-create-rules-content-watch-ds1307-select-start-minute">
+	
+			</select>		
+			<br>			
+			
+			
+			<label for="page-create-rules-content-watch-ds1307-select-stop-hour" class="select" class="ui-hidden-accessible">Select Hour Stop</label>
+			<select name="page-create-rules-content-watch-ds1307-select-stop-hour" id="page-create-rules-content-watch-ds1307-select-stop-hour">
+	
+			</select>		
+			<br>
+			<label for="page-create-rules-content-watch-ds1307-select-stop-minute" class="select" class="ui-hidden-accessible">Select Minute Stop</label>
+			<select name="page-create-rules-content-watch-ds1307-select-stop-minute" id="page-create-rules-content-watch-ds1307-select-stop-minute">
+	
+			</select>		
+			<br>
+			
+			<label for="page-create-rules-content-watch-ds1307-select-dow" class="select" class="ui-hidden-accessible">Select Day Of Week</label>
+			<select name="page-create-rules-content-watch-ds1307-select-dow" id="page-create-rules-content-watch-ds1307-select-dow">
+	
+			</select>		
+			<br>			
+
+			<label for="page-create-rules-content-watch-ds1307-select-fade-time" class="select" class="ui-hidden-accessible">Fade Time (Minutes)</label>
+			<select name="page-create-rules-content-watch-ds1307-select-fade-time" id="page-create-rules-content-watch-ds1307-select-fade-time">
+	
+			</select>		
+			<br>	
+			<!-- /input -->
+			<!-- output -->
+			<label for="page-create-rules-content-watch-ds1307-select-pin-output" class="select" class="ui-hidden-accessible">Select Output Pin</label>
+			<select name="page-create-rules-content-watch-ds1307-select-pin-output" id="page-create-rules-content-watch-ds1307-select-pin-output">
+	
+			</select>		
+			<br>
+		    
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			    	<legend>Control Output Pin</legend>
+			         	<input type="radio" name="page-create-rules-content-watch-ds1307-radio-output" id="page-create-rules-content-watch-ds1307-radio-output-on" value="1" checked="" />
+			         	<label for="page-create-rules-content-watch-ds1307-radio-output-on">On</label>
+			
+			         	<input type="radio" name="page-create-rules-content-watch-ds1307-radio-output" id="page-create-rules-content-watch-ds1307-radio-output-off" value="0"  checked="" />
+			         	<label for="page-create-rules-content-watch-ds1307-radio-output-off">Off</label>
+			    </fieldset>
+			</div>			
+			
+			<p>
+				If you want to use a PWM output set the value of the slider. If this value IS NOT 0 than the PWM value WILL BE USED.
+			</p>
+			
+			<label for="page-create-rules-content-watch-ds1307-slider">PWM Value:</label>
+			<input type="range" name="page-create-rules-content-watch-ds1307-slider" id="page-create-rules-content-watch-ds1307-slider" value="0" min="0" max="255" />							
+			<!-- /output -->	    
+	    </div>	
+	    <!-- end DS1307 rules div -->	 	        
+	    
+	    
+	    <!-- stuff that always shows -->
+	    <p>
+	    	If you wish to add more pins to your device you can use a PCF8574. In order to do so in the output pin dropdown above select "PCF8574". Note that PWM values cannot be used with a PCF8574 and will be ignored.
+	    </p>
+		<label for="page-create-rules-content-select-pcf8574-device" class="select" class="ui-hidden-accessible">Select PCF8574 Device</label>
+		<select name="page-create-rules-content-select-pcf8574-device" id="page-create-rules-content-select-pcf8574-device">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>			
+		</select>		
+		<br>
+		<label for="page-create-rules-content-select-pcf8574-pin" class="select" class="ui-hidden-accessible">Select PCF8574 Pin</label>
+		<select name="page-create-rules-content-select-pcf8574-pin" id="page-create-rules-content-select-pcf8574-pin">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>	
+		</select>		
+		<br>		
+		
+		<a href="#" id="page-create-rules-content-button-create-rule" data-role="button" data-theme="e">Create Rule</a>	    
+	    <!-- /stuff that always shows -->
+		
+	    
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="b">
+
+	</div><!-- /footer -->
+</div>
+<!-- /create rules -->
+
+
+
+
+
+<!-- Main page display: edit rules -->
+<div data-role="page" id="edit-rules" data-theme="b">
+
+	<div data-role="header" data-position="inline" data-theme="b">
+		<a href="#" data-rel="back" class="ui-btn-left">Back</a>
+		<h1>Edit Rules</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<label for="page-edit-rules-select-rule" class="select" class="ui-hidden-accessible">Select Rule</label>
+		<select name="page-edit-rules-select-rule" id="page-edit-rules-select-rule">
+
+		</select>		
+		<br>
+		<a href="#create-rules" id="page-edit-rules-edit-rule" data-role="button" data-theme="e">Edit Rule</a>	    
+		<br>
+		<a href="#" id="page-edit-rules-delete-rule" data-role="button" data-theme="e">Delete Rule</a>	    
+	    
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="b">
+
+	</div><!-- /footer -->
+</div>
+<!-- /edit rules -->
+
+
+
+
+
+<!-- Main page display: configure device -->
+<div data-role="page" id="configure-device" data-theme="b">
+
+	<div data-role="header" data-position="inline" data-theme="b">
+		<a href="#" data-rel="back" class="ui-btn-left">Back</a>
+		<h1>Configure</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div data-role="fieldcontain">
+		    <fieldset data-role="controlgroup" data-type="horizontal">
+		    	<legend>Use Remotely?</legend>
+		         	<input type="radio" name="page-configure-device-content-use-remote" id="page-configure-device-content-use-remote-yes" value="1" checked="" />
+		         	<label for="page-configure-device-content-use-remote-yes">Yes</label>
+		
+		         	<input type="radio" name="page-configure-device-content-use-remote" id="page-configure-device-content-use-remote-no" value="0"  checked="" />
+		         	<label for="page-configure-device-content-use-remote-no">No</label>
+		    </fieldset>
+		</div>			
+		<h2>
+			Digital Pins
+		</h2>
+		<label for="page-configure-device-select-set-pin-mode" class="select" class="ui-hidden-accessible">Set Pin Modes</label>
+		<select name="page-configure-device-select-set-pin-mode" id="page-configure-device-select-set-pin-mode">
+
+		</select>		
+		<br>
+		
+		<label for="page-configure-device-content-pin-name">Pin Name (Optional):</label>
+	    <input type="text" name="page-configure-device-content-pin-name" id="page-configure-device-content-pin-name" value=""  />
+	    
+		<div data-role="fieldcontain">
+		    <fieldset data-role="controlgroup" data-type="horizontal">
+		    	<legend>Set Pin Mode</legend>
+		         	<input type="radio" name="page-configure-device-content-pin-mode" id="page-configure-device-content-pin-mode-output" value="1" checked="" />
+		         	<label for="page-configure-device-content-pin-mode-output">Output</label>
+		
+		         	<input type="radio" name="page-configure-device-content-pin-mode" id="page-configure-device-content-pin-mode-input" value="0"  checked="" />
+		         	<label for="page-configure-device-content-pin-mode-input">Input</label>
+		    </fieldset>
+		</div>		    
+	    
+		<a href="#" id="page-configure-device-content-save-pin-name" data-role="button" data-theme="e">Save Pin Info</a>	    
+		
+		<h2>
+			Analog Pins
+		</h2>
+		<label for="page-configure-device-select-analog-set-pin-mode" class="select" class="ui-hidden-accessible">Select Pin</label>
+		<select name="page-configure-device-select-analog-set-pin-mode" id="page-configure-device-select-analog-set-pin-mode">
+
+		</select>		
+		<br>
+		
+		<label for="page-configure-device-content-analog-pin-name">Pin Name (Optional):</label>
+	    <input type="text" name="page-configure-device-content-analog-pin-name" id="page-configure-device-content-analog-pin-name" value=""  />	
+	    
+	    <a href="#" id="page-configure-device-content-analog-save-pin-name" data-role="button" data-theme="e">Save Pin Info</a>	
+	
+		<h2>
+			1Wire Devices
+		</h2>
+		<label for="page-configure-device-content-select-onewire-device" class="select" class="ui-hidden-accessible">Select Device</label>
+		<select name="page-configure-device-content-select-onewire-device" id="page-configure-device-content-select-onewire-device">
+
+		</select>		
+		<br>
+		
+		<label for="page-configure-device-content-onewire-device-name">Device Name (Optional):</label>
+	    <input type="text" name="page-configure-device-content-onewire-device-name" id="page-configure-device-content-onewire-device-name" value=""  />	
+	    
+	    <a href="#" id="page-configure-device-content-onewire-device-name-save" data-role="button" data-theme="e">Save Device Info</a>	
+	    	
+	    <h2>
+	    	Set Device Time
+	    </h2>
+		<label for="page-configure-device-content-select-device-time-hour" class="select" class="ui-hidden-accessible">Select Hour</label>
+		<select name="page-configure-device-content-select-device-time-hour" id="page-configure-device-content-select-device-time-hour">
+
+		</select>
+		<br>
+		<label for="page-configure-device-content-select-device-time-minute" class="select" class="ui-hidden-accessible">Select Minute</label>
+		<select name="page-configure-device-content-select-device-time-minute" id="page-configure-device-content-select-device-time-minute">
+
+		</select>
+		<br>
+		<label for="page-configure-device-content-select-device-time-second" class="select" class="ui-hidden-accessible">Select Second</label>
+		<select name="page-configure-device-content-select-device-time-second" id="page-configure-device-content-select-device-time-second">
+
+		</select>		
+		<br>
+		<label for="page-configure-device-content-select-device-time-day" class="select" class="ui-hidden-accessible">Select Day</label>
+		<select name="page-configure-device-content-select-device-time-day" id="page-configure-device-content-select-device-time-day">
+
+		</select>		
+		<br>
+		<label for="page-configure-device-content-select-device-time-dow" class="select" class="ui-hidden-accessible">Select Day of Week</label>
+		<select name="page-configure-device-content-select-device-time-dow" id="page-configure-device-content-select-device-time-dow">
+
+		</select>		
+		<br>
+		<label for="page-configure-device-content-select-device-time-month" class="select" class="ui-hidden-accessible">Select Month</label>
+		<select name="page-configure-device-content-select-device-time-month" id="page-configure-device-content-select-device-time-month">
+
+		</select>		
+		<br>
+		<label for="page-configure-device-content-select-device-time-year" class="select" class="ui-hidden-accessible">Select Year</label>
+		<select name="page-configure-device-content-select-device-time-year" id="page-configure-device-content-select-device-time-year">
+
+		</select>		
+		<br>
+	    <a href="#" id="page-configure-device-content-device-time-save" data-role="button" data-theme="e">Set Device Time</a>
+	    
+		<h2>
+			Network Info
+		</h2>
+		<label for="page-configure-device-content-name">Device Name:</label>
+	    <input type="text" name="page-configure-device-content-name" id="page-configure-device-content-name" value=""  />		
+		<label for="page-configure-device-content-ip">Device IP:</label>
+	    <input type="text" name="page-configure-device-content-ip" id="page-configure-device-content-ip" value=""  />		
+		<label for="page-configure-device-content-subnet">Device Subnet:</label>
+	    <input type="text" name="page-configure-device-content-subnet" id="page-configure-device-content-subnet" value=""  />		
+		<label for="page-configure-device-content-gateway">Device Gateway:</label>
+	    <input type="text" name="page-configure-device-content-gateway" id="page-configure-device-content-gateway" value=""  />		
+		<label for="page-configure-device-content-address">Device Address:</label>
+	    <input type="text" name="page-configure-device-content-address" id="page-configure-device-content-address" value=""  />
+		<label for="page-configure-device-content-remote-access-url">Remote Access URL (No http://):</label>
+	    <input type="text" name="page-configure-device-content-remote-access-url" id="page-configure-device-content-remote-access-url" value=""  />	    
+		<div data-role="fieldcontain">
+		    <fieldset data-role="controlgroup" data-type="horizontal">
+		    	<legend>Is this device an Arduino Mega?</legend>
+		         	<input type="radio" name="page-configure-device-content-is-mega" id="page-configure-device-content-is-mega-yes" value="1" checked="" />
+		         	<label for="page-configure-device-content-is-mega-yes">Yes</label>
+		
+		         	<input type="radio" name="page-configure-device-content-is-mega" id="page-configure-device-content-is-mega-no" value="0"  checked="" />
+		         	<label for="page-configure-device-content-is-mega-no">No</label>
+		    </fieldset>
+		</div>	    
+	    
+		<a href="#" id="page-configure-device-content-save-network-settings" data-role="button" data-theme="e">Save Network Settings</a>			    	    	    
+		
+		<br>
+		
+		<a href="#" id="page-configure-device-content-discover-onewire-devices" data-role="button" data-theme="e">Discover 1Wire Devices</a>			    	    	    
+
+		<p>
+			Resetting macros will DELETE ALL macros that are store on the device. Use with caution!
+		</p>
+	    <a href="#" data-role="button" id="page-configure-device-content-reset-macros" data-theme="e">Reset Macros</a>
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="b">
+
+	</div><!-- /footer -->
+</div>
+<!-- /configure device -->
+
+
+
+
+
+<!-- Start of page: SETTINGS -->
+<div data-role="page" id="settings" data-theme="b">
+
+	<div data-role="header" data-theme="b">
+		<a href="#" data-rel="back" class="ui-btn-left">Back</a>
+		<h1>Settings</h1>
+		<a href="#" id="settings-button-save" data-icon="check" class="ui-btn-right">Save</a>		
+	</div>
+
+	<div data-role="content">	
+		<h3>
+			Local IP Address Range
+		</h3>
+		<p>
+			Enter the first 3 octets of your local network IP. This will allow you to perform auto device discovery. For example, if your computers IP is 192.168.1.100 than input 192.168.1 here. Once inputted, click save.
+		</p>
+		<label for="settings-text-local-ip-address">Local IP Address:</label>
+	    <input type="text" name="settings-text-local-ip-address" id="settings-text-local-ip-address" value=""  />		
+	    
+	    <br>
+	    
+		<label for="page-settings-text-cosm-username">Cosm Username:</label>
+	    <input type="text" name="page-settings-text-cosm-username" id="page-settings-text-cosm-username" value=""  />
+	    	    
+	    <p>
+	    	Once you've filled out the IP above click Discover Devices to scan your local network. This may take a few minutes, so be patient.
+	    </p>
+	    <a href="#" data-role="button" id="settings-button-discover-devices" data-theme="e">Discover Devices</a>
+	</div>
+	
+	<div data-role="footer" data-theme="b">
+
+	</div>
+</div>
+<!-- /SETTINGS -->
+
+
+<!-- Start of third page: #popup -->
+<div data-role="page" id="popup">
+
+	<div data-role="header" data-theme="e">
+		<h1>Dialog</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="d">	
+		<h2>Popup</h2>
+		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
+		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to page "one"</a></p>	
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page popup -->
+
+</body>
+</html>
