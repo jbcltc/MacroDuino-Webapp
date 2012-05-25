@@ -78,6 +78,7 @@ $(document).ready(function() {
 							localStorage.currentDeviceName = data.IP;
 							localStorage.currentDeviceIP = data.IP;
 							localStorage.currentDeviceType = 0;
+							localStorage.currentDeviceUseRemoteURL = 0;
 							
 							localStorage.devices = JSON.stringify(device);
 							
